@@ -8,9 +8,7 @@ const createBook = async (req: Request, res: Response) => {
     // ------------- Validate data using Zod validator ------------------------
     const validatedBookData = BookValidationSchema.parse(bookData);
     console.log(validatedBookData);
-    const result = await BookServices.createBookIntoDB(
-        validatedBookData
-    );
+    const result = await BookServices.createBookIntoDB(validatedBookData);
     //send res
     res.status(200).json({
       success: true,
