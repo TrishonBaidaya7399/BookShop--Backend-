@@ -14,7 +14,7 @@ const bookSchema = new Schema<TBooks, IBookModal>(
   },
   {
     timestamps: true, // Automatically manage createdAt and updatedAt fields
-  },
+  }
 );
 
 // Query middleware -----------------------------------------------------------------------------------

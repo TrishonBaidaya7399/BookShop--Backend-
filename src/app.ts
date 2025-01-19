@@ -1,6 +1,7 @@
 import express, { Application, Request, Response } from "express";
 import cors from "cors";
 import { BookRoutes } from "./app/config/modules/books/routes/books.route";
+import { OrdersRoutes } from "./app/config/modules/orders/routes/orders.route";
 const app: Application = express();
 
 //parser
@@ -9,6 +10,7 @@ app.use(cors());
 
 // application routes
 app.use("/api/products", BookRoutes);
+app.use("/api/orders", OrdersRoutes);
 
 // get A controller
 const getAController = (req: Request, res: Response) => {
