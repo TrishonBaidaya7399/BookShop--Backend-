@@ -1,0 +1,93 @@
+Script: Bookstore Management System Video Demonstration
+
+"Hello and welcome to this demonstration of the Bookstore Management System. My name is [Your Name], and today, I'll walk you through the features, functionality, and implementation details of this project. Let's get started!"
+
+In this overview of This Bookstore Management System, it's a full-stack application built using Node.js, Express.js, and MongoDB with TypeScript integration. The purpose of this system is to efficiently manage books, orders, and revenue tracking for bookstores."
+
+"Our primary objectives for this project were to:
+
+- Build a RESTful API to manage books and orders.
+- Integrate MongoDB using Mongoose for schema definitions and data operations.
+- Implement CRUD functionalities for both books and orders, ensuring data integrity through robust validation and error handling.
+
+Let's start by exploring the folder structure.
+
+Inside the app folder, we have two main modules: books and orders.
+Each module contains subfolders for controller, interface, module, routes, and service.
+This structure allows for a clean separation of concerns and modular development.
+Additionally, we have a config folder for application configurations and an index.ts file to initialize the application."
+
+
+Okay, now lets talk about the project set up
+To set up the project locally:
+
+- Clone the repository using git clone.
+- Navigate to the project directory and run npm install to install dependencies.
+- Configure the .env file with your MongoDB connection string and port.
+- Finally, run the server using npm run start:dev. The API will be available at http://localhost:5000."
+- After that you can verify the api's by using postman or our new Project Management tools API testing tool... you will get this new Project Management tools link in the readme.md file
+
+1. Create a Book
+"Let me demonstrate how to create a new book.
+Using the /api/products POST endpoint, we can add a new book with details such as title, author, price, category, description, quantity, and stock status.
+For example:
+{
+  \"title\": \"The Great Gatsby\",
+  \"author\": \"F. Scott Fitzgerald\",
+  \"price\": 10,
+  \"category\": \"Fiction\",
+  \"description\": \"A story about the American dream.\",
+  \"quantity\": 100,
+  \"inStock\": true
+}
+Once submitted, the API returns the newly created book details."
+
+2. Retrieve All Books
+"Next, we have the /api/products GET endpoint to retrieve all books.
+This endpoint supports a search query parameter to filter books by title, author, or category. For example, searching for 'Fiction' will only return books in that category."
+
+3. Retrieve a Specific Book
+"Using the /api/products/:productId GET endpoint, we can fetch details of a specific book by its ID. The API will return the book's title, author, price, and more."
+
+4. Update a Book
+"To update a book, we use the /api/products/:productId PUT endpoint.
+For example, if we want to update the price and quantity of 'The Great Gatsby', we send:
+
+{
+  \"price\": 15,
+  \"quantity\": 25
+}
+The API responds with the updated book details."
+
+5. Delete a Book
+"The /api/products/:productId DELETE endpoint performs a soft delete, marking the book as 'deleted' while keeping it in the database for record-keeping. The response confirms the successful deletion."
+
+6. Place an Order
+"Now, let's place an order using the /api/orders POST endpoint.
+The request body includes the customer's email, product ID, quantity, and total price.
+For example:
+
+{
+  \"email\": \"customer@example.com\",
+  \"product\": \"648a45e5f0123c45678d9012\",
+  \"quantity\": 2,
+  \"totalPrice\": 30
+}
+The system checks inventory levels and adjusts the book's quantity accordingly. If the stock is insufficient, an error is returned."
+
+7. Calculate Revenue
+"The /api/orders/revenue GET endpoint uses MongoDB aggregation to calculate total revenue from all orders.
+The response includes the total revenue, which is calculated by multiplying the price of each book by the quantity sold."
+
+
+The application implements robust error handling:
+
+For invalid inputs, such as a negative price or insufficient stock, specific error messages are returned.
+For missing resources, such as a non-existent book, a 404 error is provided.
+A comprehensive error stack trace is also logged for debugging purposes."
+[Conclusion]
+
+"To summarize, this project demonstrates a scalable and modular approach to building an e-commerce API with TypeScript, Express, and MongoDB. The system effectively handles book and order management, inventory updates, and revenue calculations while maintaining data integrity and user-friendly error handling."
+ --------------------------------------------------------------------------------------------------------------
+
+"Thank you for watching this demonstration. Feel free to clone the repository and explore the codebase. If you have any questions or suggestions, please reach out! Happy coding!"
