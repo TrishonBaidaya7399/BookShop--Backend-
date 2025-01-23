@@ -17,4 +17,5 @@ orderSchema.statics.isOrderExists = async function (id: string) {
   const existingOrder = await OrderModel.findOne({ product: id });
   return existingOrder;
 };
+
 export const OrderModel = model<TOrder, IOrderModal>("Order", orderSchema);
