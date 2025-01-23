@@ -130,4 +130,3 @@ Contributions are welcome! Feel free to fork the repository and create pull requ
 ## Contact
 For any questions or support, contact:
 - **Email:** shukantobaidya2018@gmail.com
-- **GitHub:** [My GitHub Profile](https://github.com/TrishonBaidaya7399)
