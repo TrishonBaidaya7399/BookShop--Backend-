@@ -50,7 +50,7 @@ const getSingleBook = async (req: Request, res: Response) => {
     if (result.length === 0) {
       res.status(200).json({
         success: true,
-        message: "No book found with this id",
+        message: "Book not found. it may be deleted, or provided id is invalid",
         data: result,
       });
     } else if (result.length > 0) {

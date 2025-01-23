@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import mongoose from "mongoose";
 import { BookModel } from "../../books/module/books.module";
 import { OrderService } from "../service/orders.service";
-import { OrderModel } from "../module/orders.module"; // Assuming OrderModel is the Mongoose model for orders
+import { OrderModel } from "../module/orders.module";
 
 const createOrder = async (req: Request, res: Response): Promise<void> => {
   try {
@@ -47,6 +47,14 @@ const createOrder = async (req: Request, res: Response): Promise<void> => {
       res.status(400).json({
         success: false,
         message: "Insufficient quantity available.",
+      });
+      return;
+    }
+    const originalTotalPriceOfBooks = findBook.price * quantity;
+    if (originalTotalPriceOfBooks !== totalPrice) {
+      res.status(400).json({
+        success: false,
+        message: `Total price is not correct. It should be ${originalTotalPriceOfBooks}`,
       });
       return;
     }
@@ -113,7 +121,58 @@ const createOrder = async (req: Request, res: Response): Promise<void> => {
     });
   }
 };
-
+const getAllOrders = async (req: Request, res: Response) => {
+  const findOrders = await OrderService.getOrdersFromDB();
+  console.log({ findOrders });
+  try {
+    if (findOrders.length > 0) {
+      res.status(200).json({
+        success: false,
+        message: "Get all orders data successfully",
+        data: findOrders,
+      });
+    } else {
+      res.status(404).json({
+        success: false,
+        message: "No orders found",
+        data: [],
+      });
+    }
+  } catch (error) {
+    res.status(404).json({
+      success: false,
+      message: "No orders found",
+      error: (error as Error).message || "Unknown error",
+    });
+  }
+};
+const getTotalRevenue = async (req: Request, res: Response) => {
+  const totalRevenue = await OrderService.getTotalRevenueFromDB();
+  console.log(totalRevenue);
+  try {
+    if (totalRevenue > 0) {
+      res.status(200).json({
+        success: true,
+        message: "Total revenue got successfully",
+        data: { totalRevenue },
+      });
+    } else {
+      res.status(404).json({
+        success: false,
+        message: "No revenue found",
+        data: [],
+      });
+    }
+  } catch (error) {
+    res.status(404).json({
+      success: false,
+      message: "No revenue found",
+      error: (error as Error).message || "Unknown error",
+    });
+  }
+};
 export const OrdersController = {
   createOrder,
+  getAllOrders,
+  getTotalRevenue,
 };
