@@ -46,7 +46,7 @@ Follow the steps below to set up the project locally:
 
 ### Clone the Repository
 ```bash
-https://github.com/TrishonBaidaya7399/BookShop--Backend-.git
+https://github.com/TrishonBaidaya7399/BookShop_Backend.git
 ```
 
 ### Install Dependencies
